@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>iKeep - Keep your patient reports fast and securely</title>
+        <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+        <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <style>
+        .header {
+            background-color: coral;
+            text-align: center; 
+            color: white;
+            font-size: 1.1em;
+            padding: 10px 0;
+        }
+    </style>
+    <body>
+        <div id="container">
+            
+        </div>
+        
+        <script type="text/babel">
+            var LoginScreen = React.createClass({
+                render: function() {
+                    return (
+                            <div className="header">
+                                iKeep
+                            </div>
+                    );
+                }
+            });
+            
+            ReactDOM.render(
+                <LoginScreen/>, 
+                document.querySelector('#container')
+            );
+        </script>
+    </body>
+</html>
