@@ -8,6 +8,12 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     </head>
     <style>
+        html, body, .contain {
+            height: 100%;
+        }
+        .contain {
+            position: relative;
+        }
         .header {
             background-color: coral;
             text-align: center; 
@@ -15,19 +21,85 @@
             font-size: 1.1em;
             padding: 10px 0;
         }
+        .middle {
+            text-align: center; 
+            margin: 5px;
+        }
+        .footer input {
+            display: block;
+            width: 100%;
+            margin: auto;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .btn-primary {
+            height: 70px;
+        }
+        .login-img {
+            height: 200px;
+        }
+        /*input {
+            display: block;
+            margin: auto;
+        }*/
+        .footer {
+            position: absolute;
+            bottom: 0;
+            display: block;
+            width: 100%;
+        }
+        .footer-input {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+        }
+        .footer-bar {
+            background-color: coral;
+            height: 20px;
+            display: block;
+            width: 100%;
+            color: white;
+            text-align: center;
+        }
+        
     </style>
     <body>
-        <div id="container">
+        <div id="container" class="contain">
             
         </div>
         
         <script type="text/babel">
             var LoginScreen = React.createClass({
+                getInitialState: function() {
+                    return {
+                        username: ""
+                    };
+                },
                 render: function() {
                     return (
+                        <div>
                             <div className="header">
                                 iKeep
                             </div>
+                            <div className="middle">
+                                <div>
+                                    Welcome, {this.state.username}
+                                </div>
+                                <div>
+                                    <img src="img/i-logo.png" alt="i-logo" className="login-img"></img>
+                                </div>
+                                
+                            </div>
+                            <div className="footer">
+                                <div className="footer-input">
+                                    <input placeholder="Username" type="text" className="form-control"></input>
+                                    <input placeholder="Password" type="password" className="form-control"></input>
+                                    <input type="button" className="btn btn-primary" value="Sign In"></input>
+                                    <input type="button" className="btn" value="Register"></input>
+                                </div>
+                                <div className="footer-bar">Copyright &copy; 2016 Dandy Ling</div>
+                            </div>
+                        </div>
                     );
                 }
             });
