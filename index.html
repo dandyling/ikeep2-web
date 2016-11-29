@@ -23,8 +23,7 @@
         }
         .middle {
             text-align: center; 
-            margin: 5px;
-            padding: 20px;
+            //margin: 5px;
         }
         .footer input {
             display: block;
@@ -35,9 +34,6 @@
         }
         .btn-primary {
             height: 70px;
-        }
-        .login-img {
-            height: 200px;
         }
         /*input {
             display: block;
@@ -79,6 +75,14 @@
                 handleLogin: function() {
                     console.log("clicked");
                 },
+                componentDidMount() {
+                    var height = document.querySelector('.contain').clientHeight -
+                            document.querySelector('.header').clientHeight -
+                            document.querySelector('.footer').clientHeight;
+                    var padding = (height - 200) / 2;
+                    document.getElementsByClassName('middle')[0].setAttribute("style", "height:"+height+"px"); 
+                    document.getElementsByClassName('login-img')[0].setAttribute("style", "height:"+height+"px; padding:"+padding+"px 0");         
+                },
                 render: function() {
                     return (
                         <div>
@@ -86,12 +90,9 @@
                                 iKeep
                             </div>
                             <div className="middle">
-                                <div>
-                                    Welcome, {this.state.username}
-                                </div>
-                                <div>
+                                
                                     <img src="img/i-logo.png" alt="i-logo" className="login-img"></img>
-                                </div>
+                                
                                 
                             </div>
                             <div className="footer">
