@@ -24,6 +24,7 @@
         .middle {
             text-align: center; 
             margin: 5px;
+            padding: 20px;
         }
         .footer input {
             display: block;
@@ -75,6 +76,9 @@
                         username: ""
                     };
                 },
+                handleLogin: function() {
+                    console.log("clicked");
+                },
                 render: function() {
                     return (
                         <div>
@@ -94,7 +98,7 @@
                                 <div className="footer-input">
                                     <input placeholder="Username" type="text" className="form-control"></input>
                                     <input placeholder="Password" type="password" className="form-control"></input>
-                                    <input type="button" className="btn btn-primary" value="Sign In"></input>
+                                    <input type="button" className="btn btn-primary" value="Sign In" onClick={this.handleLogin}></input>
                                     <input type="button" className="btn" value="Register"></input>
                                 </div>
                                 <div className="footer-bar">Copyright &copy; 2016 Dandy Ling</div>
