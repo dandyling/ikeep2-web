@@ -21,36 +21,42 @@
             font-size: 1.1em;
             padding: 10px 0;
         }
-        .middle {
-            text-align: center; 
-            //margin: 5px;
+        .middle-header {
+            text-align: center;
+            padding: 20px 0;        
         }
-        .footer input {
+        .middle-logo img {
+            display: block;
+            margin: auto;
+            height: 200px;
+        }
+        .middle-input {
+            position: absolute;
+            bottom: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 100%;
+        }
+        .middle-input input {
             display: block;
             width: 100%;
             margin: auto;
             margin-top: 5px;
             margin-bottom: 5px;
         }
-        .btn-primary {
-            height: 70px;
+        .middle-input .btn-primary {
+            //height: 70px;
         }
-        /*input {
-            display: block;
-            margin: auto;
-        }*/
+        .middle-input .btn-link {
+            margin-top: -10px;
+            text-decoration: underline;
+        }
+        .footer input {
+            //height: 35px;
+        }
         .footer {
             position: absolute;
             bottom: 0;
-            display: block;
-            width: 100%;
-        }
-        .footer-input {
-            padding-left: 10px;
-            padding-right: 10px;
-            padding-bottom: 10px;
-        }
-        .footer-bar {
             background-color: coral;
             height: 20px;
             display: block;
@@ -78,10 +84,12 @@
                 componentDidMount() {
                     var height = document.querySelector('.contain').clientHeight -
                             document.querySelector('.header').clientHeight -
+                            document.querySelector('.middle-header').clientHeight -
+                            document.querySelector('.middle-input').clientHeight -
                             document.querySelector('.footer').clientHeight;
                     var padding = (height - 200) / 2;
-                    document.getElementsByClassName('middle')[0].setAttribute("style", "height:"+height+"px"); 
-                    document.getElementsByClassName('login-img')[0].setAttribute("style", "height:"+height+"px; padding:"+padding+"px 0");         
+                    document.getElementsByClassName('middle-logo')[0].setAttribute("style", "height:"+height+"px"); 
+                    document.getElementsByClassName('login-img')[0].setAttribute("style", "height:"+height+"px; padding:"+padding+"px 0");        
                 },
                 render: function() {
                     return (
@@ -90,20 +98,20 @@
                                 iKeep
                             </div>
                             <div className="middle">
-                                
+                                <div className="middle-header">
+                                    Welcome, {this.state.username}
+                                </div>
+                                <div className="middle-logo">
                                     <img src="img/i-logo.png" alt="i-logo" className="login-img"></img>
-                                
-                                
-                            </div>
-                            <div className="footer">
-                                <div className="footer-input">
+                                </div>
+                                <div className="middle-input">
                                     <input placeholder="Username" type="text" className="form-control"></input>
                                     <input placeholder="Password" type="password" className="form-control"></input>
                                     <input type="button" className="btn btn-primary" value="Sign In" onClick={this.handleLogin}></input>
-                                    <input type="button" className="btn" value="Register"></input>
-                                </div>
-                                <div className="footer-bar">Copyright &copy; 2016 Dandy Ling</div>
+                                    <input type="button" className="btn btn-link" value="Register"></input>
+                                </div>    
                             </div>
+                            <div className="footer">Copyright &copy; 2016 Dandy Ling</div>
                         </div>
                     );
                 }
