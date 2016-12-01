@@ -3,6 +3,7 @@
     <head>
         <title>iKeep - Keep your patient reports fast and securely</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
         <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
         <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
@@ -17,14 +18,14 @@
         }
         .header {
             background-color: coral;
-            text-align: center; 
+            text-align: center;
             color: white;
             font-size: 1.1em;
             padding: 10px 0;
         }
         .middle-header {
             text-align: center;
-            padding-top: 20px;        
+            padding-top: 20px;
         }
         .middle-logo img {
             display: block;
@@ -62,13 +63,13 @@
             color: white;
             text-align: center;
         }
-        
+
     </style>
     <body>
         <div id="container" class="contain">
-            
+
         </div>
-        
+
         <script type="text/babel">
             var LoginScreen = React.createClass({
                 getInitialState: function() {
@@ -86,8 +87,8 @@
                             document.querySelector('.middle-input').clientHeight -
                             document.querySelector('.footer').clientHeight;
                     var padding = (height - 200) / 2;
-                    document.getElementsByClassName('middle-logo')[0].setAttribute("style", "height:"+height+"px"); 
-                    document.getElementsByClassName('login-img')[0].setAttribute("style", "height:"+height+"px; padding:"+padding+"px 0");        
+                    document.getElementsByClassName('middle-logo')[0].setAttribute("style", "height:"+height+"px");
+                    document.getElementsByClassName('login-img')[0].setAttribute("style", "height:"+height+"px; padding:"+padding+"px 0");
                 },
                 render: function() {
                     return (
@@ -107,16 +108,16 @@
                                     <input placeholder="Password" type="password" className="form-control"></input>
                                     <input type="button" className="btn btn-primary" value="Sign In" onClick={this.handleLogin}></input>
                                     <input type="button" className="btn btn-link" value="Register"></input>
-                                </div>    
+                                </div>
                             </div>
                             <div className="footer">Copyright &copy; 2016 Dandy Ling</div>
                         </div>
                     );
                 }
             });
-            
+
             ReactDOM.render(
-                <LoginScreen/>, 
+                <LoginScreen/>,
                 document.querySelector('#container')
             );
         </script>
