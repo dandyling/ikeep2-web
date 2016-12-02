@@ -39,7 +39,7 @@
             padding-right: 10px;
             width: 100%;
         }
-        .middle-input input {
+        .middle-input input+.btn-primary {
             display: block;
             width: 100%;
             margin: auto;
@@ -50,6 +50,8 @@
             height: 70px;
         }
         .middle-input .btn-link {
+            display: block;
+            margin: auto;
             margin-top: -10px;
             text-decoration: underline;
         }
@@ -74,11 +76,19 @@
             var LoginScreen = React.createClass({
                 getInitialState: function() {
                     return {
-                        username: ""
+                        username: "",
+                        password: "",
+                        fullname: ""
                     };
                 },
-                handleLogin: function() {
-                    console.log("clicked");
+                handleUsername: function(event) {
+                    this.setState({username: event.target.value});
+                },
+                handlePassword: function(event) {
+                    this.setState({password: event.target.value});
+                },
+                handleSubmit: function(event) {
+                    event.preventDefault();
                 },
                 componentDidMount() {
                     var height = document.querySelector('.contain').clientHeight -
@@ -98,17 +108,17 @@
                             </div>
                             <div className="middle">
                                 <div className="middle-header">
-                                    Welcome, {this.state.username}
+                                    Welcome, {this.state.fullname}
                                 </div>
                                 <div className="middle-logo">
                                     <img src="img/i-logo.png" alt="i-logo" className="login-img"></img>
                                 </div>
-                                <div className="middle-input">
-                                    <input placeholder="Username" type="text" className="form-control"></input>
-                                    <input placeholder="Password" type="password" className="form-control"></input>
-                                    <input type="button" className="btn btn-primary" value="Sign In" onClick={this.handleLogin}></input>
-                                    <input type="button" className="btn btn-link" value="Register"></input>
-                                </div>
+                                <form className="middle-input" onSubmit={this.handleSubmit}>
+                                    <input placeholder="Username" value={this.state.username} type="text" className="form-control" onChange={this.handleUsername}></input>
+                                    <input placeholder="Password" value={this.state.password} type="password" className="form-control" onChange={this.handlePassword}></input>
+                                    <button type="submit" className="btn btn-primary">Sign In</button>
+                                    <button className="btn btn-link">Register</button>
+                                </form>
                             </div>
                             <div className="footer">Copyright &copy; 2016 Dandy Ling</div>
                         </div>
