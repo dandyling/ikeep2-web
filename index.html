@@ -7,6 +7,7 @@
         <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
         <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     </head>
     <style>
@@ -76,7 +77,7 @@
             var LoginScreen = React.createClass({
                 getInitialState: function() {
                     return {
-                        username: "",
+                        username: "861203526307",
                         password: "",
                         fullname: ""
                     };
@@ -89,6 +90,19 @@
                 },
                 handleSubmit: function(event) {
                     event.preventDefault();
+
+                    var url = 'https://ikeep-report.herokuapp.com/user_get_service?username='+this.state.username+'&password='+this.state.password
+                    $.ajax({
+                        url: url,
+                        dataType: 'json',
+                        cache: false,
+                        success: function(data) {
+                            this.setState({fullname: data[0].fullname});
+                        }.bind(this),
+                        error: function(xhr, status, err) {
+                            console.error(url, status, err.toString());
+                        }.bind(this)
+                    });
                 },
                 componentDidMount() {
                     var height = document.querySelector('.contain').clientHeight -
